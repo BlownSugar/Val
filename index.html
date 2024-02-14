@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Invitation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Sixtyfour&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video id="bg-video" autoplay loop muted>
+    <source src="background.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+
+<div id="lyrics-container">
+    <p id="original-lyrics"></p>
+    <p id="translated-lyrics"></p>
+</div>
+
+<audio id="background-music">
+    <source src="music.flac" type="audio/flac">
+    Your browser does not support the audio tag.
+</audio>
+
+
+<div id="lyrics-container">
+    <p id="line1" class="hidden">First line of lyrics</p>
+    <p id="line2" class="hidden">Second line of lyrics</p>
+    <!-- Add more lines as needed -->
+</div>
+
+
+<div id="heart-container" class="heart-style">
+    <svg id="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="heart-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" class="gradient-stop1" stop-color="#808080"/>
+                <stop offset="100%" class="gradient-stop2" stop-color="#808080"/>
+            </linearGradient>
+                       
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <path id="heart-path" filter="url(#glow)" fill="url(#heart-gradient)" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 Z" />
+    </svg>
+
+    <p>Дотронься до сердца.</p>
+</div>
+
+<div id="invitation" class="hidden">
+    <p>Будешь ли ты моим Валентином?</p>
+    <button id="yes-btn">Да</button>
+    <button id="no-btn">Нет</button>
+</div>
+
+
+<div id="yes-response" class="response-container hidden">
+    <video id="yes-bg-video" autoplay loop muted>
+        <source src="fireworks.mp4" type="video/mp4">
+    </video>
+    <p id="yes-text">Спасибо. Твое "Да" это мелодия для моего сердца. 
+        Я невероятным образом рад что встретил тебя.</p>
+</div>
+
+<!-- New Background and Text for "No" response -->
+<div id="no-response" class="response-container hidden">
+    <video id="no-bg-video" autoplay loop muted>
+        <source src="no.mp4" type="video/mp4">
+    </video>
+    <p id="no-text">Я все понимаю, ничего страшного.</p>
+</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

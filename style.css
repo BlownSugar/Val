@@ -1,0 +1,268 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.hidden {
+    display: none !important; /* Use !important to override any other styles that might be showing the element */
+}
+
+
+@keyframes mysticalFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        text-shadow: 0 0 5px #4a5251, 0 0 10px #4a5251, 0 0 15px #4a5251;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+        text-shadow: 0 0 10px #4a5251, 0 0 20px #4a5251, 0 0 30px #4a5251;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 0 0 5px #4a5251, 0 0 10px #4a5251, 0 0 15px #4a5251;
+    }
+}
+
+.animate-lyrics {
+    animation: mysticalFadeIn 3s ease-in-out forwards;
+}
+
+
+
+p {
+    margin: 0.5em 0; /* Add some spacing between lines */
+}
+
+
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3) rotate(-90deg);
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -1;
+    background-size: cover;
+}
+
+#lyrics-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:  #f0f5f5;
+    text-align: center;
+    font-family:  "Playfair Display SC", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.8em;
+    z-index: 2;
+}
+
+
+
+.heart-style {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        stop-color: #FF5F6D; /* Start color */
+    }
+    25% {
+        stop-color: #FFC371; /* Intermediate color */
+    }
+    50% {
+        stop-color: #12C2E9; /* Another color */
+    }
+    75% {
+        stop-color: #C471ED; /* Another color */
+    }
+    100% {
+        stop-color: #F64F59; /* End color */
+    }
+}
+
+.gradient-animate {
+    animation: gradientAnimation 5s infinite;
+}
+
+ 
+
+
+/* Keep the pulse animation */
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#heart-container p {
+    color: #f0f5f5; /* Grey color to match the heart */
+    animation: mysticalFadeIn 3s infinite; /* Reuse your mysticalFadeIn animation for consistency */
+    font-size: 1.2em; /* Adjust the font size as needed */
+    margin-top: 10px; /* Space between the heart and the text */
+}
+
+
+
+#heart-svg {
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly below the final position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at the final position */
+    }
+}
+
+#invitation {
+    text-align: center;
+    position: fixed;
+    left: 0%;
+    bottom: 20%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0; /* Start fully transparent */
+    animation: fadeInUp 0.5s ease forwards; /* Use the forwards option to retain the final state */
+}
+
+
+#invitation p {
+    font-family: 'Playfair Display SC', serif; /* A decorative font for a special feel */
+    font-size: 2em; /* Larger font size for emphasis */
+    color: #FFC371; /* A warm, inviting color */
+    text-shadow: 0 0 5px #FF5F6D, 0 0 10px #FFC371, 0 0 15px #12C2E9; /* A multi-color shadow for a mesmerizing glow */
+    transition: all 0.5s ease-in-out; /* Smooth transition for any changes */
+    animation: glow 2s infinite alternate; /* A gentle glowing effect */
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #FF5F6D, 0 0 20px #FFC371, 0 0 30px #12C2E9;
+    }
+    to {
+        text-shadow: 0 0 20px #FF5F6D, 0 0 30px #FFC371, 0 0 40px #12C2E9;
+    }
+}
+
+
+#yes-btn, #no-btn {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none; /* Remove the border for a softer look */
+    border-radius: 30px; /* More rounded corners for a mystical feel */
+    background: linear-gradient(145deg, #ff5f6d, #ffc371); /* A gentle gradient for a mesmerizing effect */
+    color: #ffffff; /* White text to stand out against the gradient */
+    font-family: 'Playfair Display SC', serif;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(255, 95, 109, 0.3), 0 2px 4px rgba(255, 95, 109, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease;
+}
+
+#yes-btn:hover, #no-btn:hover {
+    background: linear-gradient(145deg, #ffc371, #ff5f6d); /* Invert the gradient on hover for a dynamic effect */
+    box-shadow: 0 0 15px #ff5f6d, 0 0 30px #ffc371; /* Enhanced glow effect on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+
+
+.heart-style.pulse svg {
+    animation: pulse 1s infinite ease-in-out;
+}
+
+
+
+.response-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    z-index: 20; /* Ensure it's above other content */
+}
+
+.response-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.response-container p {
+    color: #fff; /* Choose a color that stands out against your video */
+    font-size: 2em; /* Adjust based on your preference */
+    text-align: center;
+    z-index: 2;
+}
+
+
+#yes-text {
+    font-family: 'Playfair Display SC', serif;
+    color: #FFC371; /* A warm, inviting color */
+    font-size: 2.3em;
+    text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
+    animation: pulsate 1.5s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 15px #FF5F6D, 0 0 20px #FFC371, 0 0 25px #12C2E9;
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
+    }
+}
+
+
+#no-text {
+    font-family: 'Playfair Display SC', serif;
+    color: #555; /* A muted, somber color */
+    font-size: 2em;
+    text-shadow: 2px 2px 4px #000; /* A darker shadow for a heavier feel */
+    transform: skew(-10deg, -5deg); /* Skew the text for an awkward look */
+    opacity: 0.7; /* Make the text slightly translucent for a faded effect */
+}
+
+
+
+/* Add more styles for your invitation and buttons here */
