@@ -264,5 +264,32 @@ p {
 }
 
 
+#start-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 25px;
+    font-size: 1em;
+    background: #e0e0e0; /* Calm, neutral color for minimalism */
+    color: #555; /* Darker text color for contrast */
+    border: 1px solid #ccc; /* Slight border for definition */
+    border-radius: 25px; /* Soft, rounded edges */
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: 'Playfair Display SC', serif;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#start-button:hover {
+    background: #d0d0d0; /* Slightly darker on hover for interactive feedback */
+}
+
+#start-button:focus {
+    outline: none; /* Maintains the minimalistic look by removing the focus outline */
+}
+
+
 
 /* Add more styles for your invitation and buttons here */

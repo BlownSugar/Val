@@ -31,6 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000); // Adjust timing as needed
     });
 
+    const startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', function() {
+        // Play the music or any other action you need to start
+        music.play();
+
+        // Hide the start button
+        startButton.style.display = 'none';
+
+        // You can also initiate other actions here, like starting animations or displaying other elements
+    });
+
 
     function animateGradient() {
         // Apply the gradient-animate class to both gradient stops
