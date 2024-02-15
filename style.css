@@ -187,7 +187,7 @@ p {
 
 #invitation {
     position: fixed;
-    top: 40%;
+    top: 25%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
