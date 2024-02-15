@@ -2,11 +2,17 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Hide scrollbars */
+    overflow-x: hidden; /* Hide horizontal scroll */
 }
 
 .hidden {
-    display: none !important; /* Use !important to override any other styles that might be showing the element */
+    display: none !important; 
+}
+
+#original-lyrics p {
+    display: block; 
+    margin: 0; 
+    padding: 0;
 }
 
 
@@ -43,7 +49,7 @@ p {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.3) rotate(-90deg);
+    transform: translate(-50%, -50%) scale(0.25) rotate(-90deg);
     min-width: 100vw;
     min-height: 100vh;
     z-index: -1;
@@ -60,35 +66,48 @@ p {
     font-family:  "Playfair Display SC", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.8em;
+    font-size: 2vw;
     z-index: 2;
 }
 
 
 
+
 .heart-style {
     position: fixed;
-    bottom: 20px;
+    bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
 }
 
+
+
+@media (max-width: 600px) {
+    #lyrics-container {
+        font-size: 4vw; 
+    }
+
+    .heart-style {
+        bottom: 10vh;
+    }
+}
+
 @keyframes gradientAnimation {
     0% {
-        stop-color: #FF5F6D; /* Start color */
+        stop-color: #FF5F6D; 
     }
     25% {
-        stop-color: #FFC371; /* Intermediate color */
+        stop-color: #FFC371; 
     }
     50% {
-        stop-color: #12C2E9; /* Another color */
+        stop-color: #12C2E9; 
     }
     75% {
-        stop-color: #C471ED; /* Another color */
+        stop-color: #C471ED; 
     }
     100% {
-        stop-color: #F64F59; /* End color */
+        stop-color: #F64F59; 
     }
 }
 
@@ -96,10 +115,6 @@ p {
     animation: gradientAnimation 5s infinite;
 }
 
- 
-
-
-/* Keep the pulse animation */
 
 @keyframes pulse {
     0% {
@@ -114,16 +129,16 @@ p {
 }
 
 #heart-container p {
-    color: #f0f5f5; /* Grey color to match the heart */
-    animation: mysticalFadeIn 3s infinite; /* Reuse your mysticalFadeIn animation for consistency */
-    font-size: 1.2em; /* Adjust the font size as needed */
-    margin-top: 10px; /* Space between the heart and the text */
+    color: #f0f5f5; 
+    animation: mysticalFadeIn 3s infinite; 
+    font-size: 1.2em; 
+    margin-top: 10px;
 }
 
 
 
 #heart-svg {
-    width: 50px; /* Adjust size as needed */
+    width: 50px;
     height: auto;
     cursor: pointer;
 }
@@ -132,33 +147,62 @@ p {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Start slightly below the final position */
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0); /* End at the final position */
+        transform: translateY(0);
     }
 }
 
-#invitation {
-    text-align: center;
-    position: fixed;
-    left: 0%;
-    bottom: 20%;
-    transform: translateX(-50%);
-    z-index: 10;
-    opacity: 0; /* Start fully transparent */
-    animation: fadeInUp 0.5s ease forwards; /* Use the forwards option to retain the final state */
+@keyframes meltAway {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.5);
+    }
 }
 
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.melt-away {
+    animation: meltAway 1s forwards; 
+}
+
+.scale-in {
+    animation: scaleIn 1s forwards;
+}
+
+#invitation {
+    position: fixed;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
 
 #invitation p {
-    font-family: 'Playfair Display SC', serif; /* A decorative font for a special feel */
-    font-size: 2em; /* Larger font size for emphasis */
-    color: #FFC371; /* A warm, inviting color */
-    text-shadow: 0 0 5px #FF5F6D, 0 0 10px #FFC371, 0 0 15px #12C2E9; /* A multi-color shadow for a mesmerizing glow */
-    transition: all 0.5s ease-in-out; /* Smooth transition for any changes */
-    animation: glow 2s infinite alternate; /* A gentle glowing effect */
+    font-family: 'Playfair Display SC', serif; 
+    font-size: 1.6em; 
+    color: #FFC371; 
+    text-shadow: 0 0 5px #FF5F6D, 0 0 10px #FFC371, 0 0 15px #12C2E9; 
+    transition: all 0.5s ease-in-out; 
+    animation: glow 2s infinite alternate; 
 }
 
 @keyframes glow {
@@ -173,22 +217,22 @@ p {
 
 #yes-btn, #no-btn {
     margin: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none; /* Remove the border for a softer look */
-    border-radius: 30px; /* More rounded corners for a mystical feel */
-    background: linear-gradient(145deg, #ff5f6d, #ffc371); /* A gentle gradient for a mesmerizing effect */
-    color: #ffffff; /* White text to stand out against the gradient */
+    padding: 1em 2em; 
+    font-size: 1rem; 
+    border: none; 
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ff5f6d, #ffc371); 
+    color: #ffffff;
     font-family: 'Playfair Display SC', serif;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(255, 95, 109, 0.3), 0 2px 4px rgba(255, 95, 109, 0.2); /* Soft shadow for depth */
+    box-shadow: 0 4px 6px rgba(255, 95, 109, 0.3), 0 2px 4px rgba(255, 95, 109, 0.2); 
     transition: all 0.3s ease;
 }
 
 #yes-btn:hover, #no-btn:hover {
-    background: linear-gradient(145deg, #ffc371, #ff5f6d); /* Invert the gradient on hover for a dynamic effect */
-    box-shadow: 0 0 15px #ff5f6d, 0 0 30px #ffc371; /* Enhanced glow effect on hover */
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    background: linear-gradient(145deg, #ffc371, #ff5f6d); 
+    box-shadow: 0 0 15px #ff5f6d, 0 0 30px #ffc371; 
+    transform: translateY(-2px); 
 }
 
 
@@ -197,7 +241,9 @@ p {
     animation: pulse 1s infinite ease-in-out;
 }
 
-
+#yes-bg-video {
+    transform: translate(-50%, -50%) scale(0.5) rotate(-90deg);
+}
 
 .response-container {
     position: fixed;
@@ -209,7 +255,7 @@ p {
     justify-content: center;
     align-items: center;
     background-size: cover;
-    z-index: 20; /* Ensure it's above other content */
+    z-index: 20;
 }
 
 .response-container video {
@@ -223,8 +269,8 @@ p {
 }
 
 .response-container p {
-    color: #fff; /* Choose a color that stands out against your video */
-    font-size: 2em; /* Adjust based on your preference */
+    color: #fff; 
+    font-size: 2em;
     text-align: center;
     z-index: 2;
 }
@@ -232,35 +278,46 @@ p {
 
 #yes-text {
     font-family: 'Playfair Display SC', serif;
-    color: #FFC371; /* A warm, inviting color */
     font-size: 2.3em;
-    text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
-    animation: pulsate 1.5s infinite ease-in-out;
+    background: linear-gradient(270deg, #FF5F6D, #FFC371, #12C2E9);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: starGradient 10s infinite ease-in-out, gentleTwinkle 3s infinite ease-in-out;
 }
 
-@keyframes pulsate {
-    0% {
-        transform: scale(1);
-        text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
+@keyframes starGradient {
+    0%, 100% {
+        background-position: 0% 50%;
     }
     50% {
-        transform: scale(1.1);
-        text-shadow: 0 0 15px #FF5F6D, 0 0 20px #FFC371, 0 0 25px #12C2E9;
+        background-position: 100% 50%;
     }
-    100% {
-        transform: scale(1);
+}
+
+@keyframes gentleTwinkle {
+    0%, 100% {
         text-shadow: 0 0 8px #FF5F6D, 0 0 10px #FFC371, 0 0 12px #12C2E9;
+    }
+    25% {
+        text-shadow: 0 0 10px #FF5F6D, 0 0 14px #FFC371, 0 0 16px #12C2E9;
+    }
+    50% {
+        text-shadow: 0 0 12px #FF5F6D, 0 0 18px #FFC371, 0 0 20px #12C2E9;
+    }
+    75% {
+        text-shadow: 0 0 10px #FF5F6D, 0 0 14px #FFC371, 0 0 16px #12C2E9;
     }
 }
 
 
 #no-text {
     font-family: 'Playfair Display SC', serif;
-    color: #555; /* A muted, somber color */
+    color: #555; 
     font-size: 2em;
-    text-shadow: 2px 2px 4px #000; /* A darker shadow for a heavier feel */
-    transform: skew(-10deg, -5deg); /* Skew the text for an awkward look */
-    opacity: 0.7; /* Make the text slightly translucent for a faded effect */
+    text-shadow: 2px 2px 4px #000; 
+    transform: skew(-10deg, -5deg); 
+    opacity: 0.7; 
 }
 
 
@@ -271,25 +328,103 @@ p {
     transform: translate(-50%, -50%);
     padding: 10px 25px;
     font-size: 1em;
-    background: #e0e0e0; /* Calm, neutral color for minimalism */
-    color: #555; /* Darker text color for contrast */
-    border: 1px solid #ccc; /* Slight border for definition */
-    border-radius: 25px; /* Soft, rounded edges */
+    background: #e0e0e0;
+    color: #555; 
+    border: 1px solid #ccc;
+    border-radius: 25px;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.3s ease;
     font-family: 'Playfair Display SC', serif;
     letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 #start-button:hover {
-    background: #d0d0d0; /* Slightly darker on hover for interactive feedback */
+    background: #d0d0d0; 
 }
 
 #start-button:focus {
-    outline: none; /* Maintains the minimalistic look by removing the focus outline */
+    outline: none;
+}
+.vhs-effect {
+    display: block; /* Make each word appear on a new line */
+    font-size: 3em; /* Adjust size as needed */
+    color: #fff; /* Text color */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.75),
+                 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 15px rgba(255, 0, 0, 0.75),
+                 0 0 20px rgba(255, 0, 0, 0.5),
+                 0 0 25px rgba(0, 255, 255, 0.75),
+                 0 0 30px rgba(0, 255, 255, 0.5),
+                 0 0 35px rgba(0, 0, 255, 0.75),
+                 0 0 40px rgba(0, 0, 255, 0.5);
+}
+
+.trembling-text {
+    display: inline-block; /* Ensure that each word is treated as a block for the animation */
+    animation: trembling 0.2s infinite;
+}
+
+@keyframes trembling {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
 }
 
 
+@keyframes trembling {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
 
-/* Add more styles for your invitation and buttons here */
+.word-by-word {
+    opacity: 0; /* Start with the word invisible */
+    animation: wordAppear 0.5s forwards; /* Adjust the duration as needed */
+}
+
+@keyframes wordAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.large-text {
+    font-size: 48px;
+    text-align: center;
+    animation: wizardlyAppear 2s ease-out, shimmer 3s linear infinite;
+}
+
+
+@keyframes wizardlyAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.5;
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -500px 0; }
+    100% { background-position: 500px 0; }
+}
+
+
+.contour-gif {
+    background-clip: text;
+    color: transparent;
+    background-image: url('starfall.gif');
+    background-size: 350% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
